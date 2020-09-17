@@ -5,7 +5,7 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 
-@Database(entities = [MonsterCardEntity::class], version = 1, exportSchema = false)
+@Database(entities = [MonsterCardEntity::class, FavouriteCardEntity::class], version = 1, exportSchema = false)
 abstract class MonsterCardsDatabase : RoomDatabase() {
 
     abstract fun monsterCardsDAO() : MonsterCardsDAO

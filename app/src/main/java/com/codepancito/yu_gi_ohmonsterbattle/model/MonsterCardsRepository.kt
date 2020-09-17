@@ -4,7 +4,7 @@ import android.content.Context
 import android.util.Log
 import com.codepancito.yu_gi_ohmonsterbattle.model.db.MonsterCardEntity
 import com.codepancito.yu_gi_ohmonsterbattle.model.db.MonsterCardsDatabase
-import com.codepancito.yu_gi_ohmonsterbattle.model.pojo.CardList
+import com.codepancito.yu_gi_ohmonsterbattle.model.pojo.for_remote.CardList
 import com.codepancito.yu_gi_ohmonsterbattle.model.remote.MonsterCardsAPI
 import com.codepancito.yu_gi_ohmonsterbattle.model.remote.RetrofitClient
 import kotlinx.coroutines.CoroutineScope
@@ -19,9 +19,12 @@ class MonsterCardsRepository(context: Context) {
     private val tag = "MonsterCardsRepository"
 
     private val database = MonsterCardsDatabase.getDatabase(context)
-    private val monsterCardList = database.monsterCardsDAO().getAllMonsterCards()
+    private val allMonsterCardsList = database.monsterCardsDAO().getAllMonsterCards()
+    private val nonFavouriteCardsList = database.monsterCardsDAO().getNonFavouriteCards()
 
-    fun getAllMonsterCards() = monsterCardList
+    fun getAllMonsterCards() = allMonsterCardsList
+
+    fun getNonFavouriteCards() = nonFavouriteCardsList
 
     fun fetchDataFromServer() {
         val service = RetrofitClient.retrofitInstance().create(MonsterCardsAPI::class.java)

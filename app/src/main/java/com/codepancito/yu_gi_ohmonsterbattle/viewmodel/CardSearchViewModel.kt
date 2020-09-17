@@ -4,10 +4,11 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import com.codepancito.yu_gi_ohmonsterbattle.model.MonsterCardsRepository
 
-class MainActivityViewModel(application: Application): AndroidViewModel(application) {
+class CardSearchViewModel(application: Application) : AndroidViewModel(application) {
 
     private val repository = MonsterCardsRepository(application)
+    private val nonFavouriteCardsList = repository.getNonFavouriteCards()
 
-    fun fetchDataFromServer() = repository.fetchDataFromServer()
+    fun getNonFavouriteCards() = nonFavouriteCardsList
 
 }

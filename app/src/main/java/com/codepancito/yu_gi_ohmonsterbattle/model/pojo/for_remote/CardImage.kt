@@ -1,4 +1,4 @@
-package com.codepancito.yu_gi_ohmonsterbattle.model.pojo
+package com.codepancito.yu_gi_ohmonsterbattle.model.pojo.for_remote
 
 import com.google.gson.annotations.SerializedName
 
