@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Yu-Gi-Oh! Monster Battle</string>
+    <string name="menu_home_title">Página Principal</string>
+    <string name="menu_search_card_title">Buscar Cartas</string>
+    <string name="menu_favourites_title">Ver Favoritos</string>
+    <string name="menu_battle_title">Luchar</string>
 </resources>
