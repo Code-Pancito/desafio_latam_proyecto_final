@@ -6,4 +6,5 @@
     <string name="menu_battle_title">Luchar</string>
     <string name="textView_Logo_text">Monster Battle</string>
     <string name="imageView_Logo_contentDescription">Logo de Yu-Gi-Oh</string>
+    <string name="imageView_CardPreview_contentDescription">Card: %1$s</string>
 </resources>

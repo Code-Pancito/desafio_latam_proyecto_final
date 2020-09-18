@@ -6,11 +6,15 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.GridLayoutManager
 import com.codepancito.yu_gi_ohmonsterbattle.R
+import com.codepancito.yu_gi_ohmonsterbattle.model.db.MonsterCardEntity
 import com.codepancito.yu_gi_ohmonsterbattle.viewmodel.CardSearchViewModel
+import kotlinx.android.synthetic.main.card_search_fragment.*
 
-class CardSearchFragment : Fragment() {
+class CardSearchFragment : Fragment(), CardSearchAdapter.OnCardClickListener {
 
     private val logTag = "CardSearchFragment"
 
@@ -29,11 +33,21 @@ class CardSearchFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+
+        val adapter = CardSearchAdapter(listOf<MonsterCardEntity>(), this)
+
+        recyclerView_cardList.adapter = adapter
+        recyclerView_cardList.layoutManager = GridLayoutManager(context, 3)
+
         viewModel = ViewModelProvider(this).get(CardSearchViewModel::class.java)
 
         viewModel.getNonFavouriteCards().observe(viewLifecycleOwner, {
-            Log.d(logTag, "size: ${it.size}")
+            adapter.updateDataSet(it)
         })
+    }
+
+    override fun onCardClick(data: MonsterCardEntity) {
+        Toast.makeText(context, data.name, Toast.LENGTH_SHORT).show()
     }
 
 }
