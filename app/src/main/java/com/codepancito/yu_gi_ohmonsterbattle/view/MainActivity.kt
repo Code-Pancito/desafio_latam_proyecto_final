@@ -27,6 +27,9 @@ class MainActivity : AppCompatActivity() {
 
         viewModel = MainActivityViewModel(application)
         viewModel.fetchDataFromServer()
+        viewModel.getFavourites().observe(this, {
+            Log.d(tag, "fav size: ${it.size}")
+        })
 
         bottomNavigationView_Menu.setOnNavigationItemSelectedListener {
             when(it.itemId) {

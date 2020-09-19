@@ -9,6 +9,7 @@ import androidx.room.RoomDatabase
 abstract class MonsterCardsDatabase : RoomDatabase() {
 
     abstract fun monsterCardsDAO() : MonsterCardsDAO
+    abstract fun favouriteCardsDAO(): FavouriteCardsDAO
 
     companion object {
         @Volatile

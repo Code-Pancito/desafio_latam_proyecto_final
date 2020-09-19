@@ -7,8 +7,8 @@ import com.codepancito.yu_gi_ohmonsterbattle.model.MonsterCardsRepository
 class CardSearchViewModel(application: Application) : AndroidViewModel(application) {
 
     private val repository = MonsterCardsRepository(application)
-    private val nonFavouriteCardsList = repository.getNonFavouriteCards()
+    private val cardList = repository.getAllCards()
 
-    fun getNonFavouriteCards() = nonFavouriteCardsList
+    fun getCardList() = cardList
 
 }

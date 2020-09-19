@@ -42,7 +42,7 @@ class CardSearchFragment : Fragment(), CardSearchAdapter.OnCardClickListener {
 
         viewModel = ViewModelProvider(this).get(CardSearchViewModel::class.java)
 
-        viewModel.getNonFavouriteCards().observe(viewLifecycleOwner, {
+        viewModel.getCardList().observe(viewLifecycleOwner, {
             adapter.updateDataSet(it)
         })
     }
@@ -51,7 +51,7 @@ class CardSearchFragment : Fragment(), CardSearchAdapter.OnCardClickListener {
         activity!!
             .supportFragmentManager
             .beginTransaction()
-            .add(R.id.frameLayout_Container, AddFavouriteFragment.newInstance(data.image, data.name, data.attack.toString(), data.defense.toString()), "AddFavourite")
+            .add(R.id.frameLayout_Container, AddFavouriteFragment.newInstance(data.image, data.name, data.attack.toString(), data.defense.toString(), data.id), "AddFavourite")
             .addToBackStack(null)
             .commit()
     }
