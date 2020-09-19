@@ -16,6 +16,8 @@ class MainActivity : AppCompatActivity() {
     private val homePageTag = "HomePage"
     private val cardSearchFragment = CardSearchFragment.newInstance()
     private val cardSearchTag = "CardSearch"
+    private val favouriteCardsFragment = FavouriteCardsFragment.newInstance()
+    private val favouriteCardsTag = "FavouriteCards"
 
     private lateinit var viewModel: MainActivityViewModel
 
@@ -42,6 +44,12 @@ class MainActivity : AppCompatActivity() {
                     showFragment(cardSearchFragment, cardSearchTag)
                     true
                 }
+
+                R.id.menu_favourites -> {
+                    showFragment(favouriteCardsFragment, favouriteCardsTag)
+                    true
+                }
+
                 else -> false
             }
         }

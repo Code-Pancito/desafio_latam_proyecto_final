@@ -12,8 +12,8 @@ interface MonsterCardsDAO {
     @Query("SELECT * FROM monster_card ORDER BY name ASC")
     fun getAllMonsterCards(): LiveData<List<MonsterCardEntity>>
 
-    @Query("SELECT t1.* FROM monster_card t1 LEFT JOIN favourite_card t2 WHERE  t2.card_id IS NULL ORDER BY t1.name ASC")
-    fun getNonFavouriteCards(): LiveData<List<MonsterCardEntity>>
+    @Query("SELECT t2.* FROM favourite_card t1 LEFT JOIN monster_card t2 WHERE t1.card_id = t2.id ORDER BY t2.name ASC")
+    fun getFavouriteCards(): LiveData<List<MonsterCardEntity>>
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insertMonsterCardList(data: List<MonsterCardEntity>)

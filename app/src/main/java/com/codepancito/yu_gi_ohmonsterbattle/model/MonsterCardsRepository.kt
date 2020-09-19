@@ -23,10 +23,13 @@ class MonsterCardsRepository(context: Context) {
     private val database = MonsterCardsDatabase.getDatabase(context)
     private val cardList = database.monsterCardsDAO().getAllMonsterCards()
     private val favourites = database.favouriteCardsDAO().getAllFavouriteCards()
+    private val favouriteCards = database.monsterCardsDAO().getFavouriteCards()
 
     fun getAllCards() = cardList
 
     fun getFavourites() = favourites
+
+    fun getFavouriteCards() = favouriteCards
 
     suspend fun insertCardIntoFavourites(
         card: FavouriteCardEntity,
