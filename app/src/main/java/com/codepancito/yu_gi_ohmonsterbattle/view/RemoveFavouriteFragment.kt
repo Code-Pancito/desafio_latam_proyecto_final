@@ -68,12 +68,13 @@ class RemoveFavouriteFragment : Fragment() {
         textView_RemoveFavourite_Attack.text = String.format(textView_RemoveFavourite_Attack.text.toString(), attack)
         textView_RemoveFavourite_Defense.text = String.format(textView_RemoveFavourite_Defense.text.toString(), defense)
 
-        button_Cancel.setOnClickListener {
+        button_Remove_Cancel.setOnClickListener {
             activity!!.supportFragmentManager.popBackStack()
         }
 
         button_Remove.setOnClickListener {
             viewModel.removeCardFromFavourites(FavouriteCardEntity(id!!))
+            button_Remove_Cancel.callOnClick()
         }
     }
 
