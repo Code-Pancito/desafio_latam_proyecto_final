@@ -10,7 +10,7 @@ import com.codepancito.yu_gi_ohmonsterbattle.model.db.MonsterCardEntity
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.item_card_preview.view.*
 
-class FavouriteCardsAdapter(private var favouritesDataSet: List<MonsterCardEntity>):
+class FavouriteCardsAdapter(private var favouritesDataSet: List<MonsterCardEntity>, private var onFavouriteClickListener: OnFavouriteClickListener):
     RecyclerView.Adapter<FavouriteCardsAdapter.FavouriteCardsViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FavouriteCardsViewHolder {
@@ -35,8 +35,16 @@ class FavouriteCardsAdapter(private var favouritesDataSet: List<MonsterCardEntit
         notifyDataSetChanged()
     }
 
-    inner class FavouriteCardsViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
+    inner class FavouriteCardsViewHolder(itemView: View): RecyclerView.ViewHolder(itemView), View.OnClickListener {
         var imageViewCardPreview: ImageView = itemView.imageView_CardPreview
+        var view = itemView.setOnClickListener(this)
+
+        override fun onClick(p0: View?) {
+            onFavouriteClickListener.onFavouriteClick(favouritesDataSet[adapterPosition])
+        }
     }
 
+    interface OnFavouriteClickListener {
+        fun onFavouriteClick(card: MonsterCardEntity)
+    }
 }

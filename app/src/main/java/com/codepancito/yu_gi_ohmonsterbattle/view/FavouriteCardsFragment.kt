@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import com.codepancito.yu_gi_ohmonsterbattle.R
@@ -13,7 +14,7 @@ import com.codepancito.yu_gi_ohmonsterbattle.model.db.MonsterCardEntity
 import com.codepancito.yu_gi_ohmonsterbattle.viewmodel.FavouriteCardsViewModel
 import kotlinx.android.synthetic.main.favourite_cards_fragment.*
 
-class FavouriteCardsFragment : Fragment() {
+class FavouriteCardsFragment : Fragment(), FavouriteCardsAdapter.OnFavouriteClickListener {
 
     private val logTag = "FavouriteCardsFragment"
 
@@ -33,7 +34,7 @@ class FavouriteCardsFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        val adapter = FavouriteCardsAdapter(listOf<MonsterCardEntity>())
+        val adapter = FavouriteCardsAdapter(listOf<MonsterCardEntity>(), this)
         recyclerView_favourites.adapter = adapter
         recyclerView_favourites.layoutManager = GridLayoutManager(context, 3)
 
@@ -42,6 +43,10 @@ class FavouriteCardsFragment : Fragment() {
         viewModel.getFavouriteCards().observe(viewLifecycleOwner, {
             adapter.updateDataSet(it)
         })
+    }
+
+    override fun onFavouriteClick(card: MonsterCardEntity) {
+        Toast.makeText(context, card.name, Toast.LENGTH_SHORT).show()
     }
 
 }

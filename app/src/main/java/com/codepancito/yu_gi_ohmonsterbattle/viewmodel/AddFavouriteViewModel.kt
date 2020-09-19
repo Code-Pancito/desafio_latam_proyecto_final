@@ -2,7 +2,6 @@ package com.codepancito.yu_gi_ohmonsterbattle.viewmodel
 
 import android.app.Application
 import android.util.Log
-import android.widget.Toast
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import com.codepancito.yu_gi_ohmonsterbattle.model.MonsterCardsRepository
@@ -19,7 +18,7 @@ class AddFavouriteViewModel(application: Application): AndroidViewModel(applicat
     private val repository = MonsterCardsRepository(application)
     val isAddFavouriteSuccessful = MutableLiveData<Boolean>(false)
     val doesFavouriteExist = MutableLiveData<Boolean>(false)
-
+    
     fun insertCardIntoFavourites(card: FavouriteCardEntity, onFavouriteExistsListener: OnFavouriteExistsListener) {
         CoroutineScope(Dispatchers.IO).launch{
             repository.insertCardIntoFavourites(card, onFavouriteExistsListener)
