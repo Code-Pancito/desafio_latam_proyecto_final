@@ -7,4 +7,9 @@
     <string name="textView_Logo_text">Monster Battle</string>
     <string name="imageView_Logo_contentDescription">Logo de Yu-Gi-Oh</string>
     <string name="imageView_CardPreview_contentDescription">Card: %1$s</string>
+    <string name="textView_AddFavourite_Title_text">¿Deseas agregar esta carta a Favoritos?</string>
+    <string name="textView_AddFavourite_Attack_text">Ataque: %1$s</string>
+    <string name="textView_AddFavourite_Defense_text">Defensa: %1$s</string>
+    <string name="cancel_text">Cancelar</string>
+    <string name="add_text">Agregar</string>
 </resources>

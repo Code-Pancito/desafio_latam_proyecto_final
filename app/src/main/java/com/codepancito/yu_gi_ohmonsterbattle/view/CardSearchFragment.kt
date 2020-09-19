@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import com.codepancito.yu_gi_ohmonsterbattle.R
@@ -47,7 +48,12 @@ class CardSearchFragment : Fragment(), CardSearchAdapter.OnCardClickListener {
     }
 
     override fun onCardClick(data: MonsterCardEntity) {
-        Toast.makeText(context, data.name, Toast.LENGTH_SHORT).show()
+        activity!!
+            .supportFragmentManager
+            .beginTransaction()
+            .add(R.id.frameLayout_Container, AddFavouriteFragment.newInstance(data.image, data.name, data.attack.toString(), data.defense.toString()), "AddFavourite")
+            .addToBackStack(null)
+            .commit()
     }
 
 }
