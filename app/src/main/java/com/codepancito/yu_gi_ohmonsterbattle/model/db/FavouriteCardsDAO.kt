@@ -1,10 +1,7 @@
 package com.codepancito.yu_gi_ohmonsterbattle.model.db
 
 import androidx.lifecycle.LiveData
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
+import androidx.room.*
 
 @Dao
 interface FavouriteCardsDAO {
@@ -17,5 +14,8 @@ interface FavouriteCardsDAO {
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insertCardIntoFavourites(card: FavouriteCardEntity)
+
+    @Delete
+    suspend fun removeCardFromFavourites(favourite: FavouriteCardEntity)
 
 }

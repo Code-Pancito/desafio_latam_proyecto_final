@@ -45,6 +45,10 @@ class MonsterCardsRepository(context: Context) {
 
     }
 
+    suspend fun removeCardFromFavourites(favourite: FavouriteCardEntity) {
+        database.favouriteCardsDAO().removeCardFromFavourites(favourite)
+    }
+
      private fun getFavouriteList(): List<FavouriteCardEntity> {
         return database.favouriteCardsDAO().getFavouriteList()
     }

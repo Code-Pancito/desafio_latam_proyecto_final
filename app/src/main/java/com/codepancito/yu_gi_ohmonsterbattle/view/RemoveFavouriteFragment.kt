@@ -6,8 +6,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.lifecycle.ViewModelProvider
 import com.codepancito.yu_gi_ohmonsterbattle.R
 import com.codepancito.yu_gi_ohmonsterbattle.model.db.FavouriteCardEntity
+import com.codepancito.yu_gi_ohmonsterbattle.viewmodel.RemoveFavouriteViewModel
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.fragment_add_favourite.*
 import kotlinx.android.synthetic.main.fragment_add_favourite.button_Cancel
@@ -35,6 +37,7 @@ class RemoveFavouriteFragment : Fragment() {
     private var defense: Int? = null
     private var id: Int? = null
 
+    private lateinit var viewModel: RemoveFavouriteViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -58,6 +61,8 @@ class RemoveFavouriteFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        viewModel = ViewModelProvider(this).get(RemoveFavouriteViewModel::class.java)
+
         Picasso.get().load(image).into(imageView_RemoveFavourite_Image)
         textView_RemoveFavourite_Name.text = name
         textView_RemoveFavourite_Attack.text = String.format(textView_RemoveFavourite_Attack.text.toString(), attack)
@@ -68,7 +73,7 @@ class RemoveFavouriteFragment : Fragment() {
         }
 
         button_Remove.setOnClickListener {
-            Toast.makeText(context, "Quitar", Toast.LENGTH_SHORT).show()
+            viewModel.removeCardFromFavourites(FavouriteCardEntity(id!!))
         }
     }
 
