@@ -8,7 +8,7 @@ import com.codepancito.yu_gi_ohmonsterbattle.model.db.MonsterCardsDatabase
 import com.codepancito.yu_gi_ohmonsterbattle.model.pojo.for_remote.CardList
 import com.codepancito.yu_gi_ohmonsterbattle.model.remote.MonsterCardsAPI
 import com.codepancito.yu_gi_ohmonsterbattle.model.remote.RetrofitClient
-import com.codepancito.yu_gi_ohmonsterbattle.viewmodel.OnFavouriteExistsListener
+import com.codepancito.yu_gi_ohmonsterbattle.utilities.OnFavouriteAddedListener
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -33,15 +33,15 @@ class MonsterCardsRepository(context: Context) {
 
     suspend fun insertCardIntoFavourites(
         card: FavouriteCardEntity,
-        onFavouriteExistsListener: OnFavouriteExistsListener
+        onFavouriteAddedListener: OnFavouriteAddedListener
     ) {
         val favourites = getFavouriteList()
 
         if (!favourites.contains(card)) {
             database.favouriteCardsDAO().insertCardIntoFavourites(card)
-            onFavouriteExistsListener.onFavouriteAdded()
+            onFavouriteAddedListener.onFavouriteAdded()
         } else
-            onFavouriteExistsListener.onFavouriteExists()
+            onFavouriteAddedListener.onFavouriteExists()
 
     }
 
