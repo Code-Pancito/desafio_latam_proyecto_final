@@ -46,7 +46,12 @@ class FavouriteCardsFragment : Fragment(), FavouriteCardsAdapter.OnFavouriteClic
     }
 
     override fun onFavouriteClick(card: MonsterCardEntity) {
-        Toast.makeText(context, card.name, Toast.LENGTH_SHORT).show()
+        activity!!
+            .supportFragmentManager
+            .beginTransaction()
+            .add(R.id.frameLayout_Container, RemoveFavouriteFragment.newInstance(card.image, card.name, card.attack, card.defense, card.id), "RemoveFavourite")
+            .addToBackStack(null)
+            .commit()
     }
 
 }
