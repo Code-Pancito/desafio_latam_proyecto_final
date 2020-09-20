@@ -14,4 +14,9 @@
     <string name="add_text">Agregar</string>
     <string name="remove_text">Quitar</string>
     <string name="textView_RemoveFavourite_Title_text">¿Desea quitar esta carta de Favoritos?</string>
+    <string name="button_Remove_All_Favourites_text">Vaciar Favoritos</string>
+    <string name="confirm_empty_favourites_text">¿De verdad desea vaciar la lista de Favoritos?</string>
+    <string name="empty_text">Vaciar</string>
+    <string name="textView_Deck_Title_text">Crear Mazo</string>
+    <string name="textView_NotEnoughFavourites_text">Necesitas un mínimo de 5 Cartas en la Lista de Favoritos para poder crear un Mazo</string>
 </resources>

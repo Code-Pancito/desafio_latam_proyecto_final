@@ -1,12 +1,15 @@
 package com.codepancito.yu_gi_ohmonsterbattle.view
 
+import android.app.AlertDialog
+import android.app.Dialog
+import android.content.DialogInterface
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import com.codepancito.yu_gi_ohmonsterbattle.R
@@ -14,7 +17,7 @@ import com.codepancito.yu_gi_ohmonsterbattle.model.db.MonsterCardEntity
 import com.codepancito.yu_gi_ohmonsterbattle.viewmodel.FavouriteCardsViewModel
 import kotlinx.android.synthetic.main.favourite_cards_fragment.*
 
-class FavouriteCardsFragment : Fragment(), FavouriteCardsAdapter.OnFavouriteClickListener {
+class FavouriteCardsFragment : DialogFragment(), FavouriteCardsAdapter.OnFavouriteClickListener {
 
     private val logTag = "FavouriteCardsFragment"
 
@@ -43,6 +46,10 @@ class FavouriteCardsFragment : Fragment(), FavouriteCardsAdapter.OnFavouriteClic
         viewModel.getFavouriteCards().observe(viewLifecycleOwner, {
             adapter.updateDataSet(it)
         })
+
+        button_Empty_Favourites.setOnClickListener {
+            onCreateDialog(savedInstanceState).show()
+        }
     }
 
     override fun onFavouriteClick(card: MonsterCardEntity) {
@@ -52,6 +59,18 @@ class FavouriteCardsFragment : Fragment(), FavouriteCardsAdapter.OnFavouriteClic
             .add(R.id.frameLayout_Container, RemoveFavouriteFragment.newInstance(card.image, card.name, card.attack, card.defense, card.id), "RemoveFavourite")
             .addToBackStack(null)
             .commit()
+    }
+
+    override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
+        return activity!!.let {
+            // Use the Builder class for convenient dialog construction
+            val builder = AlertDialog.Builder(it)
+            builder.setMessage(R.string.confirm_empty_favourites_text)
+                .setPositiveButton(R.string.empty_text) { _, _ -> viewModel.emptyFavouriteList() }
+                .setNegativeButton(R.string.cancel_text) { dialog, _ -> dialog.dismiss() }
+            // Create the AlertDialog object and return it
+            builder.create()
+        }
     }
 
 }

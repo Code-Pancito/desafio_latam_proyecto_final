@@ -18,4 +18,7 @@ interface FavouriteCardsDAO {
     @Delete
     suspend fun removeCardFromFavourites(favourite: FavouriteCardEntity)
 
+    @Query("DELETE FROM favourite_card")
+    suspend fun deleteAllFavourites()
+
 }

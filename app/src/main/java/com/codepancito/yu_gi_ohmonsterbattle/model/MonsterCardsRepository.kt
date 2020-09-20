@@ -53,6 +53,8 @@ class MonsterCardsRepository(context: Context) {
         return database.favouriteCardsDAO().getFavouriteList()
     }
 
+    suspend fun deleteAllFavourites() = database.favouriteCardsDAO().deleteAllFavourites()
+
     fun fetchDataFromServer() {
         val service = RetrofitClient.retrofitInstance().create(MonsterCardsAPI::class.java)
         val call = service.getAllCards()
