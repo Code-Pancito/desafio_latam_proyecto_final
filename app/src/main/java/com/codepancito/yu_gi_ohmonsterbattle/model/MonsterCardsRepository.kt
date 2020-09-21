@@ -5,6 +5,7 @@ import android.util.Log
 import com.codepancito.yu_gi_ohmonsterbattle.model.db.FavouriteCardEntity
 import com.codepancito.yu_gi_ohmonsterbattle.model.db.MonsterCardEntity
 import com.codepancito.yu_gi_ohmonsterbattle.model.db.MonsterCardsDatabase
+import com.codepancito.yu_gi_ohmonsterbattle.model.logic.Battle
 import com.codepancito.yu_gi_ohmonsterbattle.model.pojo.for_remote.CardList
 import com.codepancito.yu_gi_ohmonsterbattle.model.remote.MonsterCardsAPI
 import com.codepancito.yu_gi_ohmonsterbattle.model.remote.RetrofitClient
@@ -54,6 +55,18 @@ class MonsterCardsRepository(context: Context) {
     }
 
     suspend fun deleteAllFavourites() = database.favouriteCardsDAO().deleteAllFavourites()
+
+    fun getCardListFromIDs(cardIDList: List<Int>): List<MonsterCardEntity> {
+        return database.monsterCardsDAO().getCardListFromIDs(cardIDList)
+    }
+
+    fun getRandomCardList(listSize: Int): List<MonsterCardEntity> {
+        return database.monsterCardsDAO().getRandomCardList(listSize)
+    }
+
+    fun createBattle(playerDeck: List<MonsterCardEntity>, opponentDeck: List<MonsterCardEntity>): Battle {
+        return Battle(playerDeck, opponentDeck)
+    }
 
     fun fetchDataFromServer() {
         val service = RetrofitClient.retrofitInstance().create(MonsterCardsAPI::class.java)

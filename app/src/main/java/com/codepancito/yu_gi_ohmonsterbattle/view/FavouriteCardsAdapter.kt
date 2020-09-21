@@ -5,17 +5,16 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
-import com.codepancito.yu_gi_ohmonsterbattle.R
 import com.codepancito.yu_gi_ohmonsterbattle.model.db.MonsterCardEntity
 import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.item_card_preview.view.*
+import kotlinx.android.synthetic.main.item_card_preview_grid.view.*
 
-class FavouriteCardsAdapter(private var favouritesDataSet: List<MonsterCardEntity>, private var onFavouriteClickListener: OnFavouriteClickListener):
+class FavouriteCardsAdapter(private var favouritesDataSet: List<MonsterCardEntity>, private var onFavouriteClickListener: OnFavouriteClickListener, private val itemLayoutID: Int):
     RecyclerView.Adapter<FavouriteCardsAdapter.FavouriteCardsViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FavouriteCardsViewHolder {
         val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.item_card_preview, parent, false)
+            .inflate(itemLayoutID, parent, false)
         return FavouriteCardsViewHolder(view)
     }
 

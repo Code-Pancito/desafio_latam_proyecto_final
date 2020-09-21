@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="#FFFFFF"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.BattleFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/textView_Battle_Title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="serif"
+            android:gravity="center"
+            android:padding="8dp"
+            android:text="@string/battle_text"
+            android:textColor="@color/colorLogoText"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout_Battle_Score"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/textView_Battle_Title">
+
+            <ImageView
+                android:id="@+id/imageView_PlayerCardImage"
+                android:layout_width="180dp"
+                android:layout_height="270dp"
+                android:adjustViewBounds="true"
+                android:padding="8dp"
+                android:src="@drawable/icon_battle"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="ContentDescription" />
+
+            <TextView
+                android:id="@+id/textView_PlayerScore"
+                android:text="0"
+                android:textSize="25sp"
+                android:textColor="#C61E1E"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                app:layout_constraintTop_toBottomOf="@id/imageView_PlayerCardImage"
+                app:layout_constraintRight_toRightOf="@id/imageView_PlayerCardImage"/>
+
+            <ImageView
+                android:id="@+id/imageView_OpponentCardImage"
+                android:layout_width="180dp"
+                android:layout_height="270dp"
+                android:adjustViewBounds="true"
+                android:padding="8dp"
+                android:src="@drawable/icon_battle"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textView_OpponentScore"
+                android:text="0"
+                android:textSize="25sp"
+                android:textColor="#566EE3"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                app:layout_constraintTop_toBottomOf="@id/imageView_PlayerCardImage"
+                app:layout_constraintLeft_toLeftOf="@id/imageView_OpponentCardImage"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView_Battle_Messages"
+            android:padding="8dp"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintTop_toBottomOf="@id/constraintLayout_Battle_Score"
+            app:layout_constraintBottom_toTopOf="@id/button_start_turn"/>
+
+        <Button
+            android:id="@+id/button_start_turn"
+            android:text="@string/start_turn_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</FrameLayout>

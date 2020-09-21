@@ -1,13 +1,10 @@
 package com.codepancito.yu_gi_ohmonsterbattle.view
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
-import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import com.codepancito.yu_gi_ohmonsterbattle.R
@@ -16,8 +13,6 @@ import com.codepancito.yu_gi_ohmonsterbattle.viewmodel.CardSearchViewModel
 import kotlinx.android.synthetic.main.card_search_fragment.*
 
 class CardSearchFragment : Fragment(), CardSearchAdapter.OnCardClickListener {
-
-    private val logTag = "CardSearchFragment"
 
     companion object {
         fun newInstance() = CardSearchFragment()
@@ -35,7 +30,7 @@ class CardSearchFragment : Fragment(), CardSearchAdapter.OnCardClickListener {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        val adapter = CardSearchAdapter(listOf<MonsterCardEntity>(), this)
+        val adapter = CardSearchAdapter(listOf(), this)
 
         recyclerView_cardList.adapter = adapter
         recyclerView_cardList.layoutManager = GridLayoutManager(context, 3)

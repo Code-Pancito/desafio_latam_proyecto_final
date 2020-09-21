@@ -5,14 +5,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import com.codepancito.yu_gi_ohmonsterbattle.R
 import com.codepancito.yu_gi_ohmonsterbattle.model.db.FavouriteCardEntity
 import com.codepancito.yu_gi_ohmonsterbattle.viewmodel.RemoveFavouriteViewModel
 import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.fragment_add_favourite.*
-import kotlinx.android.synthetic.main.fragment_add_favourite.button_Cancel
 import kotlinx.android.synthetic.main.fragment_remove_favourite.*
 
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -28,8 +25,6 @@ private const val ARG_ID = "id"
  * create an instance of this fragment.
  */
 class RemoveFavouriteFragment : Fragment() {
-
-    private val logTag = "RemoveFavouriteFragment"
 
     private var image: String? = null
     private var name: String? = null

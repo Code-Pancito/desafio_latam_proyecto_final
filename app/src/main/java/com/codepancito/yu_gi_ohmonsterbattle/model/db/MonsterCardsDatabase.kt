@@ -23,6 +23,7 @@ abstract class MonsterCardsDatabase : RoomDatabase() {
                     context.applicationContext,
                     MonsterCardsDatabase::class.java,
                     "monster_card_database")
+                    .allowMainThreadQueries()
                     .build()
                 INSTANCE = instance
                 return instance

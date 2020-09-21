@@ -6,7 +6,6 @@ import com.codepancito.yu_gi_ohmonsterbattle.model.MonsterCardsRepository
 import com.codepancito.yu_gi_ohmonsterbattle.model.db.FavouriteCardEntity
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.DisposableHandle
 import kotlinx.coroutines.launch
 
 class RemoveFavouriteViewModel(application: Application): AndroidViewModel(application) {

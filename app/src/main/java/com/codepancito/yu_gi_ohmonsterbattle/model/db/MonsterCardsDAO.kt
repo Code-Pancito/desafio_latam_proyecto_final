@@ -18,4 +18,10 @@ interface MonsterCardsDAO {
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insertMonsterCardList(data: List<MonsterCardEntity>)
 
+    @Query("SELECT * FROM monster_card WHERE id IN (:cardIDList)")
+    fun getCardListFromIDs(cardIDList: List<Int>): List<MonsterCardEntity>
+
+    @Query("SELECT * FROM monster_card WHERE id IN (SELECT id FROM monster_card ORDER BY RANDOM() LIMIT :listSize)")
+    fun getRandomCardList(listSize: Int): List<MonsterCardEntity>
+
 }

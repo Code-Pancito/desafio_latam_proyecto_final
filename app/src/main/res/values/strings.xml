@@ -6,7 +6,6 @@
     <string name="menu_battle_title">Luchar</string>
     <string name="textView_Logo_text">Monster Battle</string>
     <string name="imageView_Logo_contentDescription">Logo de Yu-Gi-Oh</string>
-    <string name="imageView_CardPreview_contentDescription">Card: %1$s</string>
     <string name="textView_AddFavourite_Title_text">¿Deseas agregar esta carta a Favoritos?</string>
     <string name="textView_AddFavourite_Attack_text">Ataque: %1$s</string>
     <string name="textView_AddFavourite_Defense_text">Defensa: %1$s</string>
@@ -19,4 +18,9 @@
     <string name="empty_text">Vaciar</string>
     <string name="textView_Deck_Title_text">Crear Mazo</string>
     <string name="textView_NotEnoughFavourites_text">Necesitas un mínimo de 5 Cartas en la Lista de Favoritos para poder crear un Mazo</string>
+    <string name="textView_Favourites_text">Favoritos</string>
+    <string name="textView_Deck_text">Mazo</string>
+    <string name="button_Add_Deck_text">Crear Mazo</string>
+    <string name="battle_text">Batalla</string>
+    <string name="start_turn_text">Comenzar Turno</string>
 </resources>

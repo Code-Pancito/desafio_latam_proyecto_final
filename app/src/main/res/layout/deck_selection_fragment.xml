@@ -11,7 +11,7 @@
         android:layout_height="match_parent">
 
         <TextView
-            android:id="@+id/textView_Deck_Title"
+            android:id="@+id/textView_Create_Deck"
             android:textSize="24sp"
             android:textColor="@color/colorLogoText"
             android:fontFamily="serif"
@@ -29,21 +29,67 @@
             android:gravity="center"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            app:layout_constraintTop_toBottomOf="@id/textView_Deck_Title"
+            app:layout_constraintTop_toBottomOf="@id/textView_Create_Deck"
             app:layout_constraintBottom_toBottomOf="parent"/>
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraintLayout_Deck_Container"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            app:layout_constraintTop_toBottomOf="@id/textView_Deck_Title"
+            app:layout_constraintTop_toBottomOf="@id/textView_Create_Deck"
             app:layout_constraintBottom_toBottomOf="parent">
 
             <TextView
-                android:text="SI SE PUEDE :)"
+                android:id="@+id/textView_Favourites"
+                android:text="@string/textView_Favourites_text"
+                android:textColor="@color/colorLogoText"
+                android:fontFamily="serif"
+                android:textStyle="bold"
                 android:gravity="center"
+                android:paddingTop="4dp"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"/>
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toTopOf="@id/recyclerView_DeckSelection_favourites"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerView_DeckSelection_favourites"
+                android:paddingTop="4dp"
+                android:layout_width="match_parent"
+                android:layout_height="190dp"
+                app:layout_constraintTop_toBottomOf="@id/textView_Favourites"
+                app:layout_constraintBottom_toTopOf="@id/textView_Deck"/>
+
+            <TextView
+                android:id="@+id/textView_Deck"
+                android:text="@string/textView_Deck_text"
+                android:textColor="@color/colorLogoText"
+                android:fontFamily="serif"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:paddingTop="4dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/recyclerView_DeckSelection_favourites"
+                app:layout_constraintBottom_toTopOf="@id/recyclerView_DeckSelection_Deck"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerView_DeckSelection_Deck"
+                android:paddingTop="4dp"
+                android:layout_width="match_parent"
+                android:layout_height="190dp"
+                app:layout_constraintTop_toBottomOf="@id/textView_Deck"
+                app:layout_constraintBottom_toTopOf="@id/button_Add_Deck"/>
+
+            <Button
+                android:id="@+id/button_Add_Deck"
+                android:text="@string/button_Add_Deck_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/recyclerView_DeckSelection_Deck"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

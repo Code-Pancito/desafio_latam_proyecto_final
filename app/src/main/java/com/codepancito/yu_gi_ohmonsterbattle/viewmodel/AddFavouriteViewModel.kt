@@ -17,8 +17,8 @@ class AddFavouriteViewModel(application: Application): AndroidViewModel(applicat
     private val tag = "AddFavouriteViewModel"
 
     private val repository = MonsterCardsRepository(application)
-    val isAddFavouriteSuccessful = MutableLiveData<Boolean>(false)
-    val doesFavouriteExist = MutableLiveData<Boolean>(false)
+    val isAddFavouriteSuccessful = MutableLiveData(false)
+    val doesFavouriteExist = MutableLiveData(false)
     
     fun insertCardIntoFavourites(card: FavouriteCardEntity, onFavouriteAddedListener: OnFavouriteAddedListener) {
         CoroutineScope(Dispatchers.IO).launch{

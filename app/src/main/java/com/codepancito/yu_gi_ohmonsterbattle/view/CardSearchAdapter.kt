@@ -8,14 +8,14 @@ import androidx.recyclerview.widget.RecyclerView
 import com.codepancito.yu_gi_ohmonsterbattle.R
 import com.codepancito.yu_gi_ohmonsterbattle.model.db.MonsterCardEntity
 import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.item_card_preview.view.*
+import kotlinx.android.synthetic.main.item_card_preview_grid.view.*
 
 class CardSearchAdapter(private var cardsDataSet: List<MonsterCardEntity>, val onCardClickListener: OnCardClickListener):
     RecyclerView.Adapter<CardSearchAdapter.CardSearchViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CardSearchViewHolder {
         val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.item_card_preview, parent, false)
+            .inflate(R.layout.item_card_preview_grid, parent, false)
         return CardSearchViewHolder(view)
     }
 
